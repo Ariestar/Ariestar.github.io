@@ -3,28 +3,67 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Ariestar — student, software developer, and DIY enthusiast.">
-  <title>Ariestar — Personal Site</title>
+  <meta name="description" content="Tiny Room — a personal blog for writing and interactive visual experiments by Ariestar.">
+  <meta name="theme-color" content="#f3f1eb">
+  <title>Tiny Room — Ariestar</title>
   <style>
-    :root { color-scheme: light dark; font-family: system-ui, sans-serif; }
+    :root { color-scheme: light dark; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-synthesis: none; }
     * { box-sizing: border-box; }
-    body { margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 2rem; background: #f4f4f1; color: #20211e; }
-    main { width: min(100%, 44rem); padding: clamp(2rem, 8vw, 5rem); background: #fff; border: 1px solid #e1e1dc; border-radius: 1.25rem; box-shadow: 0 1.5rem 4rem #25251a12; }
-    p.kicker { margin: 0 0 1rem; color: #66735b; font-size: .82rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
-    h1 { margin: 0; font-size: clamp(2.5rem, 9vw, 4.5rem); line-height: 1; letter-spacing: -.055em; }
-    .intro { margin: 1.5rem 0 0; max-width: 34rem; color: #55574f; font-size: clamp(1.1rem, 3vw, 1.35rem); line-height: 1.7; }
-    .rule { width: 3rem; height: 3px; margin: 2rem 0; border: 0; background: #9aab7c; }
-    .note { margin: 0; color: #73756d; line-height: 1.7; }
-    @media (prefers-color-scheme: dark) { body { background: #171815; color: #f1f2ec; } main { background: #22231f; border-color: #393a34; box-shadow: 0 1.5rem 4rem #0004; } .intro { color: #c1c3b9; } .note { color: #a1a398; } }
+    body { --paper: #f3f1eb; --ink: #252721; --muted: #696b62; --line: #d9d7ce; --accent: #60734f; margin: 0; min-height: 100vh; padding: 1.25rem; background: var(--paper); color: var(--ink); }
+    .frame { width: min(100%, 76rem); min-height: calc(100vh - 2.5rem); margin: auto; display: flex; flex-direction: column; border: 1px solid var(--line); }
+    header, footer { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.2rem clamp(1.2rem, 5vw, 3.5rem); }
+    header { border-bottom: 1px solid var(--line); }
+    .brand, nav a, footer a { color: inherit; text-decoration: none; }
+    .brand { font-size: .92rem; font-weight: 700; letter-spacing: -.02em; }
+    nav { display: flex; gap: 1.35rem; font-size: .84rem; }
+    nav a, footer a { text-underline-offset: .22em; }
+    nav a:hover, footer a:hover { text-decoration: underline; }
+    main { flex: 1; display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(15rem, .8fr); align-items: center; gap: clamp(2rem, 8vw, 7rem); padding: clamp(3rem, 11vw, 8rem) clamp(1.5rem, 9vw, 7rem); }
+    .eyebrow { margin: 0 0 1.3rem; color: var(--accent); font-size: .76rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+    h1 { max-width: 9ch; margin: 0; font-family: Georgia, "Times New Roman", serif; font-size: clamp(4rem, 11vw, 8rem); font-weight: 400; letter-spacing: -.075em; line-height: .88; }
+    .lead { max-width: 34rem; margin: 2rem 0 0; color: var(--muted); font-size: clamp(1.05rem, 2vw, 1.24rem); line-height: 1.8; }
+    .card { padding: 1.6rem; border: 1px solid var(--line); background: color-mix(in srgb, var(--paper) 75%, white); }
+    .card-label { margin: 0 0 2.5rem; color: var(--muted); font-size: .73rem; letter-spacing: .13em; text-transform: uppercase; }
+    .card h2 { margin: 0; font-family: Georgia, "Times New Roman", serif; font-size: 1.7rem; font-weight: 400; }
+    .card p:not(.card-label) { color: var(--muted); line-height: 1.7; }
+    .links { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 2rem; }
+    .button { display: inline-flex; min-height: 2.8rem; align-items: center; justify-content: center; padding: .7rem 1rem; border: 1px solid var(--ink); color: var(--ink); font-size: .86rem; text-decoration: none; transition: background .18s, color .18s; }
+    .button.primary { background: var(--ink); color: var(--paper); }
+    .button:hover { background: var(--accent); border-color: var(--accent); color: white; }
+    footer { border-top: 1px solid var(--line); color: var(--muted); font-size: .78rem; }
+    @media (max-width: 680px) { body { padding: .65rem; } .frame { min-height: calc(100vh - 1.3rem); } header, footer { padding: 1rem; } nav { gap: .85rem; font-size: .78rem; } main { grid-template-columns: 1fr; gap: 2.5rem; padding: 4.5rem 1.4rem; } h1 { font-size: clamp(4.2rem, 20vw, 6.5rem); } .card-label { margin-bottom: 1.5rem; } footer { align-items: flex-start; } }
+    @media (prefers-color-scheme: dark) { body { --paper: #1c1e19; --ink: #eeeDE5; --muted: #b0b2a7; --line: #3a3d34; --accent: #b1c59a; } .card { background: #22251f; } .button.primary { background: var(--ink); color: var(--paper); } }
   </style>
 </head>
 <body>
-  <main>
-    <p class="kicker">Personal site</p>
-    <h1>Hi, I’m Ariestar.</h1>
-    <p class="intro">I’m a student who loves software development and is interested in DIY. I hope to meet people who enjoy the same things.</p>
-    <hr class="rule">
-    <p class="note">Thanks for stopping by.</p>
-  </main>
+  <div class="frame">
+    <header>
+      <a class="brand" href="https://github.com/Ariestar">ARIESTAR</a>
+      <nav aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="https://github.com/Ariestar/tiny-room">Source</a>
+      </nav>
+    </header>
+    <main id="about">
+      <section>
+        <p class="eyebrow">A personal project by Ariestar</p>
+        <h1>Tiny<br>Room.</h1>
+        <p class="lead">A personal blog for writing in Markdown and exploring ideas through interactive visual experiences.</p>
+        <div class="links">
+          <a class="button primary" href="https://github.com/Ariestar/tiny-room">Explore the project <span aria-hidden="true">&nbsp;↗</span></a>
+          <a class="button" href="https://github.com/Ariestar">More about me <span aria-hidden="true">&nbsp;↗</span></a>
+        </div>
+      </section>
+      <aside class="card" aria-label="About Tiny Room">
+        <p class="card-label">A space to make things</p>
+        <h2>Small notes.<br>Curious ideas.</h2>
+        <p>Tiny Room is an ongoing experiment in personal publishing, thoughtful writing, and the web.</p>
+      </aside>
+    </main>
+    <footer>
+      <span>Made by Ariestar</span>
+      <a href="https://github.com/Ariestar/tiny-room">Tiny Room on GitHub ↗</a>
+    </footer>
+  </div>
 </body>
 </html>
